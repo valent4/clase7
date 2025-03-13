@@ -1,8 +1,9 @@
 import streamlit as st
 from textblob import TextBlob
 from googletrans import Translator
+from streamlit_lottie import st_lottie
+import jsontranslator = Translator()
 
-translator = Translator()
 st.title('Uso de textblob')
 
 st.subheader("Por favor escribe en el campo de texto la frase que deseas analizar")
@@ -44,3 +45,7 @@ with st.expander('Corrección en inglés'):
        if text2:
           blob2=TextBlob(text2)
           st.write((blob2.correct())) 
+
+with open('Animation17.json') as source:
+animation=json.load(source)
+st. lottie (animation,width =350)
