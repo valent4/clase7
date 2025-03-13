@@ -49,5 +49,5 @@ with st.expander('Corrección en inglés'):
           st.write((blob2.correct())) 
 
 with open('Animation17.json') as source:
-animation=json.load(source)
+     animation=json.load(source)
 st. lottie (animation,width =350)
