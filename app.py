@@ -28,8 +28,12 @@ with st.sidebar:
 
 st.markdown("---")
 
-# Primer analizador
-with st.expander("Analizar polaridad y subjetividad"):
+# Crear las columnas
+col1, col2 = st.columns(2)
+
+# Columna 1: Análisis de Polaridad y Subjetividad
+with col1:
+    st.subheader("Análisis de Polaridad y Subjetividad")
     text1 = st.text_area("Escribe una frase en español:")
 
     if text1:
@@ -51,10 +55,9 @@ with st.expander("Analizar polaridad y subjetividad"):
         else:
             st.write("Sentimiento: Neutral")
 
-st.markdown("---")
-
-# Corrector de texto
-with st.expander("Corrección de texto en inglés"):
+# Columna 2: Corrector de texto en inglés
+with col2:
+    st.subheader("Corrección de texto en inglés")
     text2 = st.text_area("Escribe un texto en inglés para corregir:", key="correction")
 
     if text2:
