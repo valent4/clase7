@@ -4,50 +4,73 @@ from googletrans import Translator
 from streamlit_lottie import st_lottie
 import json
 
+# Traductor
 translator = Translator()
 
-st.title('Uso de textblob')
+# Estilo visual oscuro y coherente con la animación
+st.markdown("""
+    <style>
+    .stApp {
+        background-color: #0e1117;
+        color: #fafafa;
+    }
+    .block-container {
+        padding: 2rem;
+    }
+    </style>
+""", unsafe_allow_html=True)
 
-st.subheader("Por favor escribe en el campo de texto la frase que deseas analizar")
+# Animación Lottie
+with open('Animation17.json') as source:
+    animation = json.load(source)
+st.lottie(animation, width=350)
+
+# Título con concepto emocional
+st.title("🎤 Dale voz a tus emociones")
+st.markdown("Descubre el tono emocional de tus palabras y cómo suenan al mundo.")
+
+# Selector de estilo de voz (opcional)
+voz = st.selectbox("Elige tu estilo de voz:", ["🎙️ Neutra", "🔥 Apasionada", "🧠 Reflexiva", "📊 Analítica"])
+
+# Sidebar con explicación
 with st.sidebar:
-               st.subheader("Polaridad y Subjetividad")
-               ("""
-                Polaridad: Indica si el sentimiento expresado en el texto es positivo, negativo o neutral. 
-                Su valor oscila entre -1 (muy negativo) y 1 (muy positivo), con 0 representando un sentimiento neutral.
-                
-               Subjetividad: Mide cuánto del contenido es subjetivo (opiniones, emociones, creencias) frente a objetivo
-               (hechos). Va de 0 a 1, donde 0 es completamente objetivo y 1 es completamente subjetivo.
+    st.subheader("📈 Polaridad y Subjetividad")
+    st.markdown("""
+    - **Polaridad**: ¿Tu texto expresa alegría, tristeza o neutralidad? (Rango de -1 a 1)
+    - **Subjetividad**: ¿Es una opinión o un hecho? (Rango de 0 a 1)
+    """)
 
-                 """
-               ) 
+# Análisis de texto
+with st.expander('🔍 Analiza tus palabras'):
+    text1 = st.text_area('Escribe una frase o texto para analizar:')
 
-
-with st.expander('Analizar Polaridad y Subjetividad en un texto'):
-    text1 = st.text_area('Escribe por favor: ')
     if text1:
-
+        # Traducir a inglés para mejor análisis con TextBlob
         translation = translator.translate(text1, src="es", dest="en")
         trans_text = translation.text
         blob = TextBlob(trans_text)
-        #blob = TextBlob(text1)
-       
-        
-        st.write('Polarity: ', round(blob.sentiment.polarity,2))
-        st.write('Subjectivity: ', round(blob.sentiment.subjectivity,2))
-        x=round(blob.sentiment.polarity,2)
-        if x >= 0.5:
-            st.write( 'Es un sentimiento Positivo 😊')
-        elif x <= -0.5:
-            st.write( 'Es un sentimiento Negativo 😔')
+
+        polarity = round(blob.sentiment.polarity, 2)
+        subjectivity = round(blob.sentiment.subjectivity, 2)
+
+        # Mostrar resultados
+        st.markdown(f"**🎯 Polaridad:** {polarity}")
+        st.markdown(f"**🧭 Subjetividad:** {subjectivity}")
+
+        # Interpretación según polaridad
+        if polarity >= 0.5:
+            st.success('Tu voz suena optimista y alegre 😊')
+        elif polarity <= -0.5:
+            st.error('Tu voz refleja tristeza o molestia 😔')
         else:
-            st.write( 'Es un sentimiento Neutral 😐')
+            st.info('Tu voz transmite calma o neutralidad 😐')
 
-with st.expander('Corrección en inglés'):
-       text2 = st.text_area('Escribe por favor: ',key='4')
-       if text2:
-          blob2=TextBlob(text2)
-          st.write((blob2.correct())) 
+# Corrección gramatical
+with st.expander('📝 Corrección en inglés'):
+    text2 = st.text_area('Escribe una frase en inglés para corregir:', key='correccion')
 
-with open('Animation17.json') as source:
-     animation=json.load(source)
-st. lottie (animation,width =350)
+    if text2:
+        blob2 = TextBlob(text2)
+        corrected = blob2.correct()
+        st.markdown(f"**Versión corregida:** {corrected}")
+
