@@ -26,7 +26,7 @@ with open('Animation17.json') as source:
 st.lottie(animation, width=350)
 
 # Título con concepto emocional
-st.title("🎤 Dale voz a tus emociones")
+st.title("Dale voz a tus emociones🎤")
 st.markdown("Descubre el tono emocional de tus palabras y cómo suenan al mundo.")
 
 # Selector de estilo de voz (opcional)
