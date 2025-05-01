@@ -54,8 +54,8 @@ with st.expander('🔍 Analiza tus palabras'):
         subjectivity = round(blob.sentiment.subjectivity, 2)
 
         # Mostrar resultados
-        st.markdown(f"**🎯 Polaridad:** {polarity}")
-        st.markdown(f"**🧭 Subjetividad:** {subjectivity}")
+        st.markdown(f"** Polaridad:** {polarity}")
+        st.markdown(f"** Subjetividad:** {subjectivity}")
 
         # Interpretación según polaridad
         if polarity >= 0.5:
@@ -66,7 +66,7 @@ with st.expander('🔍 Analiza tus palabras'):
             st.info('Tu voz transmite calma o neutralidad 😐')
 
 # Corrección gramatical
-with st.expander('📝 Corrección en inglés'):
+with st.expander(' Corrección en inglés'):
     text2 = st.text_area('Escribe una frase en inglés para corregir:', key='correccion')
 
     if text2:
