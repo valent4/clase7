@@ -5,20 +5,20 @@ from googletrans import Translator
 # Configuración de la página
 st.set_page_config(page_title="Análisis de Sentimientos", layout="centered")
 
-# Estilos para fondo claro y texto oscuro
+# Estilos personalizados: fondo claro y texto oscuro, o viceversa
 st.markdown("""
     <style>
         body, .main, .stApp {
-            background-color: #F4E1F4; /* Fondo morado claro */
-            color: #4B0082; /* Texto morado oscuro para contraste */
+            background-color: #E6D9FF; /* Fondo pastel morado claro */
+            color: #4B0082; /* Texto morado oscuro para buen contraste */
         }
         .stTextInput>div>div>input, textarea {
-            background-color: #E0B0FF !important; /* Fondo morado pastel */
+            background-color: #D9B3FF !important; /* Fondo morado pastel suave */
             color: #4B0082 !important; /* Texto morado oscuro */
             border-radius: 8px;
         }
         .stButton>button {
-            background-color: #FFB6C1; /* Rosa pastel */
+            background-color: #FFB3E6; /* Rosa pastel */
             color: #4B0082; /* Texto morado oscuro */
             border-radius: 12px;
             font-size: 16px;
@@ -28,16 +28,16 @@ st.markdown("""
             padding-top: 2rem;
         }
         .stTextArea textarea {
-            background-color: #E0B0FF !important; /* Fondo morado pastel */
+            background-color: #D9B3FF !important; /* Fondo morado pastel suave */
             color: #4B0082 !important; /* Texto morado oscuro */
             border-radius: 8px;
         }
         h1 {
-            color: #9B4D96; /* Morado medio para el título */
+            color: #9B4D96; /* Título en morado intermedio */
         }
         .stMarkdown {
             font-size: 16px;
-            color: #4B0082; /* Morado oscuro */
+            color: #4B0082; /* Texto en morado oscuro */
         }
     </style>
 """, unsafe_allow_html=True)
