@@ -5,22 +5,21 @@ from googletrans import Translator
 # Configuración de la página
 st.set_page_config(page_title="Análisis de Sentimientos", layout="centered")
 
-# Estilos personalizados con mejor contraste
+# Estilos oscuros personalizados
 st.markdown("""
     <style>
         body, .main, .stApp {
-            background-color: #F0F0F5; /* Fondo pastel claro */
-            color: #333333; /* Texto oscuro para buen contraste */
+            background-color: #121212;
+            color: #E0E0E0;
         }
         .stTextInput>div>div>input, textarea {
-            background-color: #D8B0FF !important; /* Fondo morado pastel suave */
-            color: #4B0082 !important; /* Texto morado oscuro */
-            border-radius: 8px;
+            background-color: #1E1E1E !important;
+            color: #E0E0E0 !important;
         }
         .stButton>button {
-            background-color: #FFB3E6; /* Rosa pastel */
-            color: #4B0082; /* Texto morado oscuro */
-            border-radius: 12px;
+            background-color: #7B61FF;
+            color: white;
+            border-radius: 10px;
             font-size: 16px;
             padding: 0.5em 1em;
         }
@@ -28,16 +27,8 @@ st.markdown("""
             padding-top: 2rem;
         }
         .stTextArea textarea {
-            background-color: #D8B0FF !important; /* Fondo morado pastel suave */
-            color: #4B0082 !important; /* Texto morado oscuro */
-            border-radius: 8px;
-        }
-        h1 {
-            color: #9B4D96; /* Título en morado intermedio */
-        }
-        .stMarkdown {
-            font-size: 16px;
-            color: #333333; /* Texto oscuro */
+            background-color: #1E1E1E !important;
+            color: #E0E0E0 !important;
         }
     </style>
 """, unsafe_allow_html=True)
