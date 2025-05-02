@@ -5,22 +5,22 @@ from googletrans import Translator
 # Configuración de la página
 st.set_page_config(page_title="Análisis de Sentimientos", layout="centered")
 
-# Estilos personalizados
+# Estilos personalizados con colores fríos pastel
 st.markdown("""
     <style>
         body, .main, .stApp {
-            background-color: #f4f7fb;
-            color: #333333;
+            background-color: #E8F4F8;  /* Fondo en azul pastel */
+            color: #2E3A47;  /* Texto oscuro pero suave */
             font-family: 'Arial', sans-serif;
         }
         .stTextInput>div>div>input, textarea {
-            background-color: #ffffff !important;
-            color: #333333 !important;
+            background-color: #D1E7FF !important;  /* Fondo azul claro */
+            color: #2E3A47 !important;  /* Texto oscuro */
             border-radius: 8px;
             padding: 10px;
         }
         .stButton>button {
-            background-color: #7b61ff;
+            background-color: #A7C8F2;  /* Botón en azul pastel */
             color: white;
             border-radius: 12px;
             font-size: 16px;
@@ -30,31 +30,31 @@ st.markdown("""
             padding-top: 2rem;
         }
         .stTextArea textarea {
-            background-color: #ffffff !important;
-            color: #333333 !important;
+            background-color: #D1E7FF !important;  /* Fondo azul claro */
+            color: #2E3A47 !important;  /* Texto oscuro */
             border-radius: 8px;
             padding: 10px;
         }
         .stMarkdown {
-            color: #555555;
+            color: #2E3A47;  /* Texto más oscuro para las frases */
         }
         h1, h2, h3 {
-            color: #4b4b4b;
+            color: #2E3A47;  /* Títulos en color oscuro */
         }
         .stSuccess {
-            background-color: #c8f7c5;
-            border: 1px solid #a4d79b;
-            color: #4d8c43;
+            background-color: #D1F7E6;  /* Verde pastel suave */
+            border: 1px solid #A4E6B0;
+            color: #4C9F7F;
         }
         .stError {
-            background-color: #f8d7da;
-            border: 1px solid #f5c6cb;
-            color: #721c24;
+            background-color: #FAD6D0;  /* Rosa pastel suave */
+            border: 1px solid #F5A7A0;
+            color: #D86F5A;
         }
         .stInfo {
-            background-color: #d1ecf1;
-            border: 1px solid #bee5eb;
-            color: #0c5460;
+            background-color: #D1ECF9;  /* Azul pastel claro */
+            border: 1px solid #A6D9E9;
+            color: #336A76;
         }
     </style>
 """, unsafe_allow_html=True)
@@ -125,7 +125,6 @@ with col2:
 # Pie de página
 st.markdown("---")
 st.caption("💻 Desarrollado por Valentina • Powered by TextBlob & Google Translate")
-
 
 
 
