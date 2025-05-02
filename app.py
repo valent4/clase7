@@ -5,15 +5,15 @@ from googletrans import Translator
 # Configuración de la página
 st.set_page_config(page_title="Análisis de Sentimientos", layout="centered")
 
-# Estilos personalizados: fondo claro y texto oscuro, o viceversa
+# Estilos personalizados con mejor contraste
 st.markdown("""
     <style>
         body, .main, .stApp {
-            background-color: #E6D9FF; /* Fondo pastel morado claro */
-            color: #4B0082; /* Texto morado oscuro para buen contraste */
+            background-color: #F0F0F5; /* Fondo pastel claro */
+            color: #333333; /* Texto oscuro para buen contraste */
         }
         .stTextInput>div>div>input, textarea {
-            background-color: #D9B3FF !important; /* Fondo morado pastel suave */
+            background-color: #D8B0FF !important; /* Fondo morado pastel suave */
             color: #4B0082 !important; /* Texto morado oscuro */
             border-radius: 8px;
         }
@@ -28,7 +28,7 @@ st.markdown("""
             padding-top: 2rem;
         }
         .stTextArea textarea {
-            background-color: #D9B3FF !important; /* Fondo morado pastel suave */
+            background-color: #D8B0FF !important; /* Fondo morado pastel suave */
             color: #4B0082 !important; /* Texto morado oscuro */
             border-radius: 8px;
         }
@@ -37,7 +37,7 @@ st.markdown("""
         }
         .stMarkdown {
             font-size: 16px;
-            color: #4B0082; /* Texto en morado oscuro */
+            color: #333333; /* Texto oscuro */
         }
     </style>
 """, unsafe_allow_html=True)
