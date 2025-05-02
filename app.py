@@ -5,7 +5,7 @@ from googletrans import Translator
 # Configuración de la página
 st.set_page_config(page_title="Análisis de Sentimientos", layout="centered")
 
-# Estilos morados y rosados con contraste
+# Estilos para fondo claro y texto oscuro
 st.markdown("""
     <style>
         body, .main, .stApp {
@@ -19,7 +19,7 @@ st.markdown("""
         }
         .stButton>button {
             background-color: #FFB6C1; /* Rosa pastel */
-            color: white;
+            color: #4B0082; /* Texto morado oscuro */
             border-radius: 12px;
             font-size: 16px;
             padding: 0.5em 1em;
@@ -108,7 +108,6 @@ with col2:
 # Pie de página
 st.markdown("---")
 st.caption("💻 Desarrollado por Valentina • Powered by TextBlob & Google Translate")
-
 
 
 
