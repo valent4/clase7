@@ -16,6 +16,8 @@ st.markdown("""
         .stTextInput>div>div>input, textarea {
             background-color: #ffffff !important;
             color: #333333 !important;
+            border-radius: 8px;
+            padding: 10px;
         }
         .stButton>button {
             background-color: #7b61ff;
@@ -30,6 +32,8 @@ st.markdown("""
         .stTextArea textarea {
             background-color: #ffffff !important;
             color: #333333 !important;
+            border-radius: 8px;
+            padding: 10px;
         }
         .stMarkdown {
             color: #555555;
@@ -121,5 +125,6 @@ with col2:
 # Pie de página
 st.markdown("---")
 st.caption("💻 Desarrollado por Valentina • Powered by TextBlob & Google Translate")
+
 
 
