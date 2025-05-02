@@ -5,61 +5,77 @@ from googletrans import Translator
 # Configuración de la página
 st.set_page_config(page_title="Análisis de Sentimientos", layout="centered")
 
-# Estilos personalizados con colores pasteles suaves
+# Estilos personalizados
 st.markdown("""
-    <style>
-        body, .main, .stApp {
-            background-color: #F2F6FC;  /* Fondo azul pastel suave */
-            color: #383031;  /* Texto gris oscuro para contraste */
-            font-family: 'Arial', sans-serif;
-        }
-        .stTextInput>div>div>input, textarea {
-            background-color: #D9E7F6 !important;  /* Fondo azul pastel suave */
-            color: #383031 !important;  /* Texto gris oscuro */
-            border-radius: 10px;
-            padding: 15px;
-            font-size: 16px;
-        }
-        .stButton>button {
-            background-color: #B8C8F0;  /* Botón azul pastel */
-            color: white;
-            border-radius: 10px;
-            font-size: 16px;
-            padding: 12px 20px;
-            font-weight: bold;
-        }
-        .block-container {
-            padding-top: 2rem;
-        }
-        .stTextArea textarea {
-            background-color: #D9E7F6 !important;  /* Fondo azul pastel suave */
-            color: #383031 !important;  /* Texto gris oscuro */
-            border-radius: 10px;
-            padding: 15px;
-            font-size: 16px;
-        }
-        .stMarkdown {
-            color: #383031;  /* Texto gris oscuro para frases */
-        }
-        h1, h2, h3 {
-            color: #383031;  /* Títulos en color gris oscuro */
-        }
-        .stSuccess {
-            background-color: #D0F8C0;  /* Verde pastel claro */
-            border: 1px solid #A1D8A3;
-            color: #4F8A55;
-        }
-        .stError {
-            background-color: #F8D0D4;  /* Rosa pastel suave */
-            border: 1px solid #F1A1A6;
-            color: #D36B6F;
-        }
-        .stInfo {
-            background-color: #D2E6FB;  /* Azul pastel claro */
-            border: 1px solid #A3CDE7;
-            color: #537C91;
-        }
-    </style>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+    html, body, .stApp {
+        background-color: #F6F8FB;
+        color: #383031;
+        font-family: 'Nunito', sans-serif;
+    }
+
+    .stTextInput > div > div > input, textarea, .stTextArea textarea {
+        background-color: #E3ECF9 !important;
+        color: #383031 !important;
+        border-radius: 16px;
+        padding: 15px;
+        font-size: 16px;
+        box-shadow: 0px 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .stButton > button {
+        background-color: #A9B7F5;
+        color: white;
+        border-radius: 16px;
+        font-size: 16px;
+        padding: 12px 24px;
+        font-weight: bold;
+        transition: 0.2s ease-in-out;
+        box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .stButton > button:hover {
+        background-color: #90A3E8;
+        transform: scale(1.03);
+    }
+
+    h1, h2, h3 {
+        color: #383031;
+    }
+
+    .stSuccess {
+        background-color: #BCE5C7;
+        border: 1px solid #A1D8A3;
+        color: #4F8A55;
+        border-radius: 16px;
+        padding: 10px;
+    }
+
+    .stError {
+        background-color: #F9CEDF;
+        border: 1px solid #F1A1A6;
+        color: #D36B6F;
+        border-radius: 16px;
+        padding: 10px;
+    }
+
+    .stInfo {
+        background-color: #D3E8FA;
+        border: 1px solid #A3CDE7;
+        color: #537C91;
+        border-radius: 16px;
+        padding: 10px;
+    }
+
+    .block-container {
+        padding-top: 2rem;
+    }
+
+    .stMarkdown {
+        color: #383031;
+    }
+</style>
 """, unsafe_allow_html=True)
 
 translator = Translator()
@@ -78,7 +94,7 @@ with st.sidebar:
     Valor entre -1 (muy negativo) y 1 (muy positivo).  
     **Subjetividad**  
     Valor entre 0 (muy objetivo) y 1 (muy subjetivo).
-    
+
     ---
     🧩 **Tip:** Escribe algo sincero para ver cómo reacciona la IA.
     """)
@@ -92,21 +108,17 @@ with col1:
     text1 = st.text_area("Escribe una frase en español:")
 
     if text1:
-        # Traducir a inglés para análisis con TextBlob
         translation = translator.translate(text1, src="es", dest="en")
         translated_text = translation.text
         blob = TextBlob(translated_text)
 
-        # Obtener polaridad y subjetividad
         polarity = round(blob.sentiment.polarity, 2)
         subjectivity = round(blob.sentiment.subjectivity, 2)
 
-        # Mostrar resultados
         st.markdown("**Resultados del análisis:**")
         st.write("🔵 Polaridad:", polarity)
         st.write("🟡 Subjetividad:", subjectivity)
 
-        # Respuesta emocional adaptada
         st.markdown("**🤖 Reacción del sistema:**")
         if polarity >= 0.5:
             st.success("¡Qué bonito lo que escribiste! Se siente muy positivo 🌟")
@@ -128,6 +140,7 @@ with col2:
 # Pie de página
 st.markdown("---")
 st.caption("💻 Desarrollado por Valentina • Powered by TextBlob & Google Translate")
+
 
 
 
