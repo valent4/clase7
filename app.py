@@ -2,97 +2,107 @@ import streamlit as st
 from textblob import TextBlob
 from googletrans import Translator
 
+# Configuración de la página
 st.set_page_config(page_title="Análisis de Sentimientos", layout="centered")
 
-# Estilo personalizado pastel y limpio
+# Estilos personalizados con colores pasteles suaves y texto morado claro
 st.markdown("""
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-<style>
-    html, body, [class*="css"]  {
-        background-color: #F8F4FF !important;
-        font-family: 'Poppins', sans-serif !important;
-        color: #383031;
-    }
+    <style>
+        body, .main, .stApp {
+            background-color: #F2F6FC;  /* Fondo azul pastel suave */
+            color: #383031;
+            font-family: 'Arial', sans-serif;
+        }
 
-    [data-testid="stTextInput"] input, 
-    [data-testid="stTextArea"] textarea {
-        background-color: #FFFFFF !important;
-        color: #383031 !important;
-        border-radius: 12px !important;
-        padding: 15px !important;
-        font-size: 16px !important;
-        border: none !important;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    }
+        .stTextInput>div>div>input, textarea {
+            background-color: #D9E7F6 !important;
+            color: #383031 !important;
+            border-radius: 10px;
+            padding: 15px;
+            font-size: 16px;
+        }
 
-    [data-testid="stButton"] button {
-        background-color: #D2C3F6 !important;
-        color: #383031 !important;
-        border-radius: 12px !important;
-        padding: 10px 22px !important;
-        font-size: 16px !important;
-        font-weight: 600;
-        transition: all 0.3s ease-in-out;
-        box-shadow: 0px 4px 10px rgba(0,0,0,0.06);
-        border: none;
-    }
+        .stButton>button {
+            background-color: #B8C8F0;
+            color: white;
+            border-radius: 10px;
+            font-size: 16px;
+            padding: 12px 20px;
+            font-weight: bold;
+        }
 
-    [data-testid="stButton"] button:hover {
-        background-color: #B9A9EC !important;
-        transform: scale(1.02);
-    }
+        .block-container {
+            padding-top: 2rem;
+        }
 
-    .stSuccess {
-        background-color: #E7F9EF !important;
-        border-radius: 12px !important;
-        color: #355C47 !important;
-    }
+        .stTextArea textarea {
+            background-color: #D9E7F6 !important;
+            color: #383031 !important;
+            border-radius: 10px;
+            padding: 15px;
+            font-size: 16px;
+        }
 
-    .stError {
-        background-color: #FFE9EC !important;
-        border-radius: 12px !important;
-        color: #A74449 !important;
-    }
+        .stMarkdown {
+            color: #383031;
+        }
 
-    .stInfo {
-        background-color: #E9F0FF !important;
-        border-radius: 12px !important;
-        color: #3E5F88 !important;
-    }
+        h1, h2, h3 {
+            color: #8C6BC2 !important;  /* Morado claro */
+        }
 
-    h1, h2, h3 {
-        color: #2E1F47 !important;
-    }
+        .stSuccess {
+            background-color: #D0F8C0;
+            border: 1px solid #A1D8A3;
+            color: #4F8A55;
+        }
 
-    footer, header {visibility: hidden;}
-</style>
+        .stError {
+            background-color: #F8D0D4;
+            border: 1px solid #F1A1A6;
+            color: #D36B6F;
+        }
+
+        .stInfo {
+            background-color: #D2E6FB;
+            border: 1px solid #A3CDE7;
+            color: #537C91;
+        }
+
+        /* Eliminar sombreado oscuro por defecto */
+        .stTextInput, .stTextArea, .stButton {
+            box-shadow: none !important;
+        }
+    </style>
 """, unsafe_allow_html=True)
 
-# Lógica de la app
 translator = Translator()
 
-st.markdown("<h1 style='text-align: center;'>🌸 Análisis de Sentimientos</h1>", unsafe_allow_html=True)
-st.markdown("<p style='text-align: center;'>Explora la polaridad y subjetividad de tus textos con una reacción emocional suave y cálida.</p>", unsafe_allow_html=True)
+# Título y subtítulo
+st.markdown("<h1 style='text-align: center;'>🧠 Análisis de Sentimientos</h1>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; color:#383031;'>Analiza la polaridad y subjetividad de un texto y recibe una reacción emocional.</p>", unsafe_allow_html=True)
+
 st.markdown("---")
 
+# Sidebar
 with st.sidebar:
-    st.header("🧾 ¿Qué mide esta app?")
+    st.header("ℹ️ ¿Qué mide esta app?")
     st.markdown("""
     **Polaridad**  
-    Valor entre -1 (negativo) y 1 (positivo).  
-
+    Valor entre -1 (muy negativo) y 1 (muy positivo).  
     **Subjetividad**  
-    Valor entre 0 (objetivo) y 1 (subjetivo).
-
+    Valor entre 0 (muy objetivo) y 1 (muy subjetivo).
+    
     ---
-    ✨ Consejo: Escribe algo que te salga del corazón para ver la reacción.
+    🧩 **Tip:** Escribe algo sincero para ver cómo reacciona la IA.
     """)
 
+# Columnas principales
 col1, col2 = st.columns(2)
 
+# Columna 1: Análisis de sentimientos
 with col1:
-    st.subheader("💬 Análisis emocional")
-
+    st.subheader("🔍 Análisis emocional del texto")
     text1 = st.text_area("Escribe una frase en español:")
 
     if text1:
@@ -103,21 +113,21 @@ with col1:
         polarity = round(blob.sentiment.polarity, 2)
         subjectivity = round(blob.sentiment.subjectivity, 2)
 
-        st.markdown("**Resultados:**")
+        st.markdown("**Resultados del análisis:**")
         st.write("🔵 Polaridad:", polarity)
         st.write("🟡 Subjetividad:", subjectivity)
 
-        st.markdown("**🌟 Reacción del sistema:**")
+        st.markdown("**🤖 Reacción del sistema:**")
         if polarity >= 0.5:
-            st.success("¡Eso fue muy positivo! Me hizo sonreír 💜")
+            st.success("¡Qué bonito lo que escribiste! Se siente muy positivo 🌟")
         elif polarity <= -0.5:
-            st.error("Eso suena un poco triste... estoy aquí contigo 💔")
+            st.error("Veo que hay sentimientos negativos... Si necesitas hablar, aquí estoy. 💙")
         else:
-            st.info("Tu texto es neutro. A veces está bien simplemente observar 🌀")
+            st.info("Tu texto tiene un tono neutral. ¿Quieres contarme más? 🤔")
 
+# Columna 2: Corrector en inglés
 with col2:
-    st.subheader("✍️ Corrector de inglés")
-
+    st.subheader("✏️ Corrector de texto en inglés")
     text2 = st.text_area("Escribe un texto en inglés para corregir:", key="correction")
 
     if text2:
@@ -125,8 +135,10 @@ with col2:
         st.markdown("**Texto corregido:**")
         st.write(blob2.correct())
 
+# Pie de página
 st.markdown("---")
-st.caption("🎀 Desarrollado por Valentina • Powered by TextBlob & Google Translate")
+st.caption("💻 Desarrollado por Valentina • Powered by TextBlob & Google Translate")
+
 
 
 
