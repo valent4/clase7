@@ -9,52 +9,55 @@ st.set_page_config(page_title="Análisis de Sentimientos", layout="centered")
 st.markdown("""
     <style>
         body, .main, .stApp {
-            background-color: #E8F4F8;  /* Fondo en azul pastel */
-            color: #2E3A47;  /* Texto oscuro pero suave */
-            font-family: 'Arial', sans-serif;
+            background-color: #F2F8FC;  /* Fondo azul claro pastel */
+            color: #3A3A3A;  /* Texto gris oscuro para contraste */
+            font-family: 'Helvetica Neue', sans-serif;
         }
         .stTextInput>div>div>input, textarea {
-            background-color: #D1E7FF !important;  /* Fondo azul claro */
-            color: #2E3A47 !important;  /* Texto oscuro */
+            background-color: #E1F2FB !important;  /* Fondo azul muy claro pastel */
+            color: #3A3A3A !important;  /* Texto gris oscuro */
             border-radius: 8px;
-            padding: 10px;
+            padding: 12px;
+            font-size: 16px;
         }
         .stButton>button {
-            background-color: #A7C8F2;  /* Botón en azul pastel */
+            background-color: #9ACBFF;  /* Botón azul pastel suave */
             color: white;
             border-radius: 12px;
             font-size: 16px;
-            padding: 0.5em 1em;
+            padding: 12px 25px;
+            font-weight: bold;
         }
         .block-container {
             padding-top: 2rem;
         }
         .stTextArea textarea {
-            background-color: #D1E7FF !important;  /* Fondo azul claro */
-            color: #2E3A47 !important;  /* Texto oscuro */
+            background-color: #E1F2FB !important;  /* Fondo azul claro pastel */
+            color: #3A3A3A !important;  /* Texto gris oscuro */
             border-radius: 8px;
-            padding: 10px;
+            padding: 12px;
+            font-size: 16px;
         }
         .stMarkdown {
-            color: #2E3A47;  /* Texto más oscuro para las frases */
+            color: #3A3A3A;  /* Texto oscuro para frases */
         }
         h1, h2, h3 {
-            color: #2E3A47;  /* Títulos en color oscuro */
+            color: #3A3A3A;  /* Títulos en color gris oscuro */
         }
         .stSuccess {
-            background-color: #D1F7E6;  /* Verde pastel suave */
-            border: 1px solid #A4E6B0;
-            color: #4C9F7F;
+            background-color: #D9F6E8;  /* Verde pastel claro */
+            border: 1px solid #A1D8A3;
+            color: #4F8A55;
         }
         .stError {
-            background-color: #FAD6D0;  /* Rosa pastel suave */
-            border: 1px solid #F5A7A0;
-            color: #D86F5A;
+            background-color: #F7D0D6;  /* Rosa pastel suave */
+            border: 1px solid #F1A1A6;
+            color: #D36B6F;
         }
         .stInfo {
-            background-color: #D1ECF9;  /* Azul pastel claro */
-            border: 1px solid #A6D9E9;
-            color: #336A76;
+            background-color: #CFE7F9;  /* Azul pastel claro */
+            border: 1px solid #A3CDE7;
+            color: #537C91;
         }
     </style>
 """, unsafe_allow_html=True)
@@ -125,6 +128,7 @@ with col2:
 # Pie de página
 st.markdown("---")
 st.caption("💻 Desarrollado por Valentina • Powered by TextBlob & Google Translate")
+
 
 
 
