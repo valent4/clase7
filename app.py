@@ -5,21 +5,22 @@ from googletrans import Translator
 # Configuración de la página
 st.set_page_config(page_title="Análisis de Sentimientos", layout="centered")
 
-# Estilos oscuros personalizados
+# Estilos personalizados
 st.markdown("""
     <style>
         body, .main, .stApp {
-            background-color: #121212;
-            color: #E0E0E0;
+            background-color: #f4f7fb;
+            color: #333333;
+            font-family: 'Arial', sans-serif;
         }
         .stTextInput>div>div>input, textarea {
-            background-color: #1E1E1E !important;
-            color: #E0E0E0 !important;
+            background-color: #ffffff !important;
+            color: #333333 !important;
         }
         .stButton>button {
-            background-color: #7B61FF;
+            background-color: #7b61ff;
             color: white;
-            border-radius: 10px;
+            border-radius: 12px;
             font-size: 16px;
             padding: 0.5em 1em;
         }
@@ -27,15 +28,36 @@ st.markdown("""
             padding-top: 2rem;
         }
         .stTextArea textarea {
-            background-color: #1E1E1E !important;
-            color: #E0E0E0 !important;
+            background-color: #ffffff !important;
+            color: #333333 !important;
+        }
+        .stMarkdown {
+            color: #555555;
+        }
+        h1, h2, h3 {
+            color: #4b4b4b;
+        }
+        .stSuccess {
+            background-color: #c8f7c5;
+            border: 1px solid #a4d79b;
+            color: #4d8c43;
+        }
+        .stError {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        .stInfo {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            color: #0c5460;
         }
     </style>
 """, unsafe_allow_html=True)
 
 translator = Translator()
 
-# Título
+# Título y subtítulo
 st.markdown("<h1 style='text-align: center;'>🧠 Análisis de Sentimientos</h1>", unsafe_allow_html=True)
 st.markdown("<p style='text-align: center;'>Analiza la polaridad y subjetividad de un texto y recibe una reacción emocional.</p>", unsafe_allow_html=True)
 
@@ -99,4 +121,5 @@ with col2:
 # Pie de página
 st.markdown("---")
 st.caption("💻 Desarrollado por Valentina • Powered by TextBlob & Google Translate")
+
 
