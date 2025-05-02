@@ -2,15 +2,16 @@ import streamlit as st
 from textblob import TextBlob
 from googletrans import Translator
 
+# Configuración de página
 st.set_page_config(page_title="Análisis de Sentimientos", layout="centered")
 
-# CSS mejorado y forzado
+# Estilos pastel tipo app original
 st.markdown("""
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 <style>
     html, body, [class*="css"]  {
-        background-color: #F5F7FB !important;
-        font-family: 'Nunito', sans-serif !important;
+        background-color: #F0E6FA !important;
+        font-family: 'Poppins', sans-serif !important;
         color: #383031;
     }
     [data-testid="stTextInput"] input, [data-testid="stTextArea"] textarea {
@@ -20,17 +21,17 @@ st.markdown("""
         padding: 15px !important;
         font-size: 16px !important;
         border: none !important;
-        box-shadow: 0px 4px 12px rgba(0,0,0,0.05);
+        box-shadow: 0px 4px 8px rgba(0,0,0,0.05);
     }
     [data-testid="stButton"] button {
         background-color: #A9B7F5 !important;
         color: white !important;
         border-radius: 12px !important;
-        padding: 12px 24px !important;
+        padding: 10px 22px !important;
         font-size: 16px !important;
         font-weight: 600;
         transition: all 0.3s ease-in-out;
-        box-shadow: 0px 4px 10px rgba(0,0,0,0.08);
+        box-shadow: 0px 4px 10px rgba(0,0,0,0.06);
         border: none;
     }
     [data-testid="stButton"] button:hover {
@@ -41,46 +42,48 @@ st.markdown("""
         color: #383031 !important;
     }
     .stSuccess {
-        background-color: #CDEDD2 !important;
+        background-color: #D9F3E3 !important;
         border-radius: 12px !important;
-        color: #3F734C !important;
+        color: #355C47 !important;
     }
     .stError {
-        background-color: #FAD4D7 !important;
+        background-color: #FBE6E8 !important;
         border-radius: 12px !important;
         color: #A74449 !important;
     }
     .stInfo {
-        background-color: #D6E8FB !important;
+        background-color: #DDEBFB !important;
         border-radius: 12px !important;
-        color: #426785 !important;
+        color: #3E5F88 !important;
     }
     footer, header {visibility: hidden;}
 </style>
 """, unsafe_allow_html=True)
 
+# Funcionalidad
 translator = Translator()
 
-st.markdown("<h1 style='text-align: center;'>🧠 Análisis de Sentimientos</h1>", unsafe_allow_html=True)
-st.markdown("<p style='text-align: center;'>Analiza la polaridad y subjetividad de un texto y recibe una reacción emocional.</p>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center;'>🌸 Análisis de Sentimientos</h1>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center;'>Explora la polaridad y subjetividad de tus textos con una reacción emocional.</p>", unsafe_allow_html=True)
 st.markdown("---")
 
 with st.sidebar:
-    st.header("ℹ️ ¿Qué mide esta app?")
+    st.header("🧾 ¿Qué mide esta app?")
     st.markdown("""
     **Polaridad**  
-    Valor entre -1 (muy negativo) y 1 (muy positivo).  
+    Valor entre -1 (negativo) y 1 (positivo).  
+
     **Subjetividad**  
-    Valor entre 0 (muy objetivo) y 1 (muy subjetivo).
+    Valor entre 0 (objetivo) y 1 (subjetivo).
 
     ---
-    🧩 **Tip:** Escribe algo sincero para ver cómo reacciona la IA.
+    ✨ Consejo: Escribe algo que te salga del corazón para ver la reacción.
     """)
 
 col1, col2 = st.columns(2)
 
 with col1:
-    st.subheader("🔍 Análisis emocional del texto")
+    st.subheader("💬 Análisis emocional")
     text1 = st.text_area("Escribe una frase en español:")
 
     if text1:
@@ -91,20 +94,20 @@ with col1:
         polarity = round(blob.sentiment.polarity, 2)
         subjectivity = round(blob.sentiment.subjectivity, 2)
 
-        st.markdown("**Resultados del análisis:**")
+        st.markdown("**Resultados:**")
         st.write("🔵 Polaridad:", polarity)
         st.write("🟡 Subjetividad:", subjectivity)
 
-        st.markdown("**🤖 Reacción del sistema:**")
+        st.markdown("**🌟 Reacción del sistema:**")
         if polarity >= 0.5:
-            st.success("¡Qué bonito lo que escribiste! Se siente muy positivo 🌟")
+            st.success("¡Eso fue muy positivo! Me hizo sonreír 💜")
         elif polarity <= -0.5:
-            st.error("Veo que hay sentimientos negativos... Si necesitas hablar, aquí estoy. 💙")
+            st.error("Eso suena un poco triste... estoy aquí contigo 💔")
         else:
-            st.info("Tu texto tiene un tono neutral. ¿Quieres contarme más? 🤔")
+            st.info("Tu texto es neutro. A veces está bien simplemente observar 🌀")
 
 with col2:
-    st.subheader("✏️ Corrector de texto en inglés")
+    st.subheader("✍️ Corrector de inglés")
     text2 = st.text_area("Escribe un texto en inglés para corregir:", key="correction")
 
     if text2:
@@ -113,7 +116,7 @@ with col2:
         st.write(blob2.correct())
 
 st.markdown("---")
-st.caption("💻 Desarrollado por Valentina • Powered by TextBlob & Google Translate")
+st.caption("🎀 Desarrollado por Valentina • Powered by TextBlob & Google Translate")
 
 
 
