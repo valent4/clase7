@@ -5,21 +5,22 @@ from googletrans import Translator
 # Configuración de la página
 st.set_page_config(page_title="Análisis de Sentimientos", layout="centered")
 
-# Estilos oscuros personalizados
+# Estilos pastel personalizados
 st.markdown("""
     <style>
         body, .main, .stApp {
-            background-color: #121212;
-            color: #E0E0E0;
+            background-color: #F0F4F8; /* Color pastel suave */
+            color: #4A4A4A; /* Color gris suave */
         }
         .stTextInput>div>div>input, textarea {
-            background-color: #1E1E1E !important;
-            color: #E0E0E0 !important;
+            background-color: #E8F6F3 !important; /* Color pastel verde claro */
+            color: #4A4A4A !important;
+            border-radius: 8px;
         }
         .stButton>button {
-            background-color: #7B61FF;
+            background-color: #FFB6C1; /* Rosa pastel */
             color: white;
-            border-radius: 10px;
+            border-radius: 12px;
             font-size: 16px;
             padding: 0.5em 1em;
         }
@@ -27,8 +28,16 @@ st.markdown("""
             padding-top: 2rem;
         }
         .stTextArea textarea {
-            background-color: #1E1E1E !important;
-            color: #E0E0E0 !important;
+            background-color: #E8F6F3 !important; /* Color pastel verde claro */
+            color: #4A4A4A !important;
+            border-radius: 8px;
+        }
+        h1 {
+            color: #FF6F61; /* Color coral pastel */
+        }
+        .stMarkdown {
+            font-size: 16px;
+            color: #6B6B6B; /* Gris suave */
         }
     </style>
 """, unsafe_allow_html=True)
@@ -99,7 +108,6 @@ with col2:
 # Pie de página
 st.markdown("---")
 st.caption("💻 Desarrollado por Valentina • Powered by TextBlob & Google Translate")
-
 
 
 
