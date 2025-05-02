@@ -5,57 +5,57 @@ from googletrans import Translator
 # Configuración de la página
 st.set_page_config(page_title="Análisis de Sentimientos", layout="centered")
 
-# Estilos personalizados con colores fríos pasteles
+# Estilos personalizados con colores pasteles suaves
 st.markdown("""
     <style>
         body, .main, .stApp {
-            background-color: #F1F9FF;  /* Fondo azul pastel suave */
-            color: #3A3A3A;  /* Texto gris oscuro para contraste */
+            background-color: #F2F6FC;  /* Fondo azul pastel suave */
+            color: #383031;  /* Texto gris oscuro para contraste */
             font-family: 'Arial', sans-serif;
         }
         .stTextInput>div>div>input, textarea {
-            background-color: #D8E6F3 !important;  /* Fondo azul pastel suave */
-            color: #3A3A3A !important;  /* Texto gris oscuro */
-            border-radius: 8px;
-            padding: 12px;
+            background-color: #D9E7F6 !important;  /* Fondo azul pastel suave */
+            color: #383031 !important;  /* Texto gris oscuro */
+            border-radius: 10px;
+            padding: 15px;
             font-size: 16px;
         }
         .stButton>button {
-            background-color: #B1C9F7;  /* Botón azul pastel suave */
+            background-color: #B8C8F0;  /* Botón azul pastel */
             color: white;
-            border-radius: 12px;
+            border-radius: 10px;
             font-size: 16px;
-            padding: 12px 25px;
+            padding: 12px 20px;
             font-weight: bold;
         }
         .block-container {
             padding-top: 2rem;
         }
         .stTextArea textarea {
-            background-color: #D8E6F3 !important;  /* Fondo azul pastel suave */
-            color: #3A3A3A !important;  /* Texto gris oscuro */
-            border-radius: 8px;
-            padding: 12px;
+            background-color: #D9E7F6 !important;  /* Fondo azul pastel suave */
+            color: #383031 !important;  /* Texto gris oscuro */
+            border-radius: 10px;
+            padding: 15px;
             font-size: 16px;
         }
         .stMarkdown {
-            color: #3A3A3A;  /* Texto oscuro para frases */
+            color: #383031;  /* Texto gris oscuro para frases */
         }
         h1, h2, h3 {
-            color: #3A3A3A;  /* Títulos en color gris oscuro */
+            color: #383031;  /* Títulos en color gris oscuro */
         }
         .stSuccess {
-            background-color: #D9F6E8;  /* Verde pastel claro */
+            background-color: #D0F8C0;  /* Verde pastel claro */
             border: 1px solid #A1D8A3;
             color: #4F8A55;
         }
         .stError {
-            background-color: #F7D0D6;  /* Rosa pastel suave */
+            background-color: #F8D0D4;  /* Rosa pastel suave */
             border: 1px solid #F1A1A6;
             color: #D36B6F;
         }
         .stInfo {
-            background-color: #CFE7F9;  /* Azul pastel claro */
+            background-color: #D2E6FB;  /* Azul pastel claro */
             border: 1px solid #A3CDE7;
             color: #537C91;
         }
@@ -128,6 +128,7 @@ with col2:
 # Pie de página
 st.markdown("---")
 st.caption("💻 Desarrollado por Valentina • Powered by TextBlob & Google Translate")
+
 
 
 
