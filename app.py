@@ -5,16 +5,16 @@ from googletrans import Translator
 # Configuración de la página
 st.set_page_config(page_title="Análisis de Sentimientos", layout="centered")
 
-# Estilos pastel personalizados
+# Estilos morados y rosados con contraste
 st.markdown("""
     <style>
         body, .main, .stApp {
-            background-color: #F0F4F8; /* Color pastel suave */
-            color: #4A4A4A; /* Color gris suave */
+            background-color: #F4E1F4; /* Fondo morado claro */
+            color: #4B0082; /* Texto morado oscuro para contraste */
         }
         .stTextInput>div>div>input, textarea {
-            background-color: #E8F6F3 !important; /* Color pastel verde claro */
-            color: #4A4A4A !important;
+            background-color: #E0B0FF !important; /* Fondo morado pastel */
+            color: #4B0082 !important; /* Texto morado oscuro */
             border-radius: 8px;
         }
         .stButton>button {
@@ -28,16 +28,16 @@ st.markdown("""
             padding-top: 2rem;
         }
         .stTextArea textarea {
-            background-color: #E8F6F3 !important; /* Color pastel verde claro */
-            color: #4A4A4A !important;
+            background-color: #E0B0FF !important; /* Fondo morado pastel */
+            color: #4B0082 !important; /* Texto morado oscuro */
             border-radius: 8px;
         }
         h1 {
-            color: #FF6F61; /* Color coral pastel */
+            color: #9B4D96; /* Morado medio para el título */
         }
         .stMarkdown {
             font-size: 16px;
-            color: #6B6B6B; /* Gris suave */
+            color: #4B0082; /* Morado oscuro */
         }
     </style>
 """, unsafe_allow_html=True)
@@ -108,6 +108,7 @@ with col2:
 # Pie de página
 st.markdown("---")
 st.caption("💻 Desarrollado por Valentina • Powered by TextBlob & Google Translate")
+
 
 
 
