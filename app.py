@@ -2,10 +2,9 @@ import streamlit as st
 from textblob import TextBlob
 from googletrans import Translator
 
-# Configuración de página
 st.set_page_config(page_title="Análisis de Sentimientos", layout="centered")
 
-# Estilo personalizado completo con tonos pastel claros
+# Estilo personalizado pastel y limpio
 st.markdown("""
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 <style>
@@ -43,14 +42,6 @@ st.markdown("""
         transform: scale(1.02);
     }
 
-    .custom-box {
-        background-color: #F2EEFD;
-        padding: 20px;
-        border-radius: 16px;
-        box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.04);
-        margin-bottom: 20px;
-    }
-
     .stSuccess {
         background-color: #E7F9EF !important;
         border-radius: 12px !important;
@@ -70,14 +61,14 @@ st.markdown("""
     }
 
     h1, h2, h3 {
-        color: #3D2E54 !important;
+        color: #2E1F47 !important;
     }
 
     footer, header {visibility: hidden;}
 </style>
 """, unsafe_allow_html=True)
 
-# Funcionalidad
+# Lógica de la app
 translator = Translator()
 
 st.markdown("<h1 style='text-align: center;'>🌸 Análisis de Sentimientos</h1>", unsafe_allow_html=True)
@@ -101,49 +92,42 @@ col1, col2 = st.columns(2)
 
 with col1:
     st.subheader("💬 Análisis emocional")
-    with st.container():
-        st.markdown('<div class="custom-box">', unsafe_allow_html=True)
 
-        text1 = st.text_area("Escribe una frase en español:")
+    text1 = st.text_area("Escribe una frase en español:")
 
-        if text1:
-            translation = translator.translate(text1, src="es", dest="en")
-            translated_text = translation.text
-            blob = TextBlob(translated_text)
+    if text1:
+        translation = translator.translate(text1, src="es", dest="en")
+        translated_text = translation.text
+        blob = TextBlob(translated_text)
 
-            polarity = round(blob.sentiment.polarity, 2)
-            subjectivity = round(blob.sentiment.subjectivity, 2)
+        polarity = round(blob.sentiment.polarity, 2)
+        subjectivity = round(blob.sentiment.subjectivity, 2)
 
-            st.markdown("**Resultados:**")
-            st.write("🔵 Polaridad:", polarity)
-            st.write("🟡 Subjetividad:", subjectivity)
+        st.markdown("**Resultados:**")
+        st.write("🔵 Polaridad:", polarity)
+        st.write("🟡 Subjetividad:", subjectivity)
 
-            st.markdown("**🌟 Reacción del sistema:**")
-            if polarity >= 0.5:
-                st.success("¡Eso fue muy positivo! Me hizo sonreír 💜")
-            elif polarity <= -0.5:
-                st.error("Eso suena un poco triste... estoy aquí contigo 💔")
-            else:
-                st.info("Tu texto es neutro. A veces está bien simplemente observar 🌀")
-        
-        st.markdown('</div>', unsafe_allow_html=True)
+        st.markdown("**🌟 Reacción del sistema:**")
+        if polarity >= 0.5:
+            st.success("¡Eso fue muy positivo! Me hizo sonreír 💜")
+        elif polarity <= -0.5:
+            st.error("Eso suena un poco triste... estoy aquí contigo 💔")
+        else:
+            st.info("Tu texto es neutro. A veces está bien simplemente observar 🌀")
 
 with col2:
     st.subheader("✍️ Corrector de inglés")
-    with st.container():
-        st.markdown('<div class="custom-box">', unsafe_allow_html=True)
 
-        text2 = st.text_area("Escribe un texto en inglés para corregir:", key="correction")
+    text2 = st.text_area("Escribe un texto en inglés para corregir:", key="correction")
 
-        if text2:
-            blob2 = TextBlob(text2)
-            st.markdown("**Texto corregido:**")
-            st.write(blob2.correct())
-
-        st.markdown('</div>', unsafe_allow_html=True)
+    if text2:
+        blob2 = TextBlob(text2)
+        st.markdown("**Texto corregido:**")
+        st.write(blob2.correct())
 
 st.markdown("---")
 st.caption("🎀 Desarrollado por Valentina • Powered by TextBlob & Google Translate")
+
 
 
 
