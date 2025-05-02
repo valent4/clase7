@@ -5,27 +5,30 @@ from googletrans import Translator
 # Configuración de página
 st.set_page_config(page_title="Análisis de Sentimientos", layout="centered")
 
-# Estilos pastel tipo app original
+# Estilo personalizado completo con tonos pastel claros
 st.markdown("""
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 <style>
     html, body, [class*="css"]  {
-        background-color: #F0E6FA !important;
+        background-color: #F8F4FF !important;
         font-family: 'Poppins', sans-serif !important;
         color: #383031;
     }
-    [data-testid="stTextInput"] input, [data-testid="stTextArea"] textarea {
-        background-color: #E6ECFC !important;
+
+    [data-testid="stTextInput"] input, 
+    [data-testid="stTextArea"] textarea {
+        background-color: #FFFFFF !important;
         color: #383031 !important;
         border-radius: 12px !important;
         padding: 15px !important;
         font-size: 16px !important;
         border: none !important;
-        box-shadow: 0px 4px 8px rgba(0,0,0,0.05);
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
+
     [data-testid="stButton"] button {
-        background-color: #A9B7F5 !important;
-        color: white !important;
+        background-color: #D2C3F6 !important;
+        color: #383031 !important;
         border-radius: 12px !important;
         padding: 10px 22px !important;
         font-size: 16px !important;
@@ -34,28 +37,42 @@ st.markdown("""
         box-shadow: 0px 4px 10px rgba(0,0,0,0.06);
         border: none;
     }
+
     [data-testid="stButton"] button:hover {
-        background-color: #8A9DEB !important;
+        background-color: #B9A9EC !important;
         transform: scale(1.02);
     }
-    h1, h2, h3 {
-        color: #383031 !important;
+
+    .custom-box {
+        background-color: #F2EEFD;
+        padding: 20px;
+        border-radius: 16px;
+        box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.04);
+        margin-bottom: 20px;
     }
+
     .stSuccess {
-        background-color: #D9F3E3 !important;
+        background-color: #E7F9EF !important;
         border-radius: 12px !important;
         color: #355C47 !important;
     }
+
     .stError {
-        background-color: #FBE6E8 !important;
+        background-color: #FFE9EC !important;
         border-radius: 12px !important;
         color: #A74449 !important;
     }
+
     .stInfo {
-        background-color: #DDEBFB !important;
+        background-color: #E9F0FF !important;
         border-radius: 12px !important;
         color: #3E5F88 !important;
     }
+
+    h1, h2, h3 {
+        color: #3D2E54 !important;
+    }
+
     footer, header {visibility: hidden;}
 </style>
 """, unsafe_allow_html=True)
@@ -64,7 +81,7 @@ st.markdown("""
 translator = Translator()
 
 st.markdown("<h1 style='text-align: center;'>🌸 Análisis de Sentimientos</h1>", unsafe_allow_html=True)
-st.markdown("<p style='text-align: center;'>Explora la polaridad y subjetividad de tus textos con una reacción emocional.</p>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center;'>Explora la polaridad y subjetividad de tus textos con una reacción emocional suave y cálida.</p>", unsafe_allow_html=True)
 st.markdown("---")
 
 with st.sidebar:
@@ -84,39 +101,50 @@ col1, col2 = st.columns(2)
 
 with col1:
     st.subheader("💬 Análisis emocional")
-    text1 = st.text_area("Escribe una frase en español:")
+    with st.container():
+        st.markdown('<div class="custom-box">', unsafe_allow_html=True)
 
-    if text1:
-        translation = translator.translate(text1, src="es", dest="en")
-        translated_text = translation.text
-        blob = TextBlob(translated_text)
+        text1 = st.text_area("Escribe una frase en español:")
 
-        polarity = round(blob.sentiment.polarity, 2)
-        subjectivity = round(blob.sentiment.subjectivity, 2)
+        if text1:
+            translation = translator.translate(text1, src="es", dest="en")
+            translated_text = translation.text
+            blob = TextBlob(translated_text)
 
-        st.markdown("**Resultados:**")
-        st.write("🔵 Polaridad:", polarity)
-        st.write("🟡 Subjetividad:", subjectivity)
+            polarity = round(blob.sentiment.polarity, 2)
+            subjectivity = round(blob.sentiment.subjectivity, 2)
 
-        st.markdown("**🌟 Reacción del sistema:**")
-        if polarity >= 0.5:
-            st.success("¡Eso fue muy positivo! Me hizo sonreír 💜")
-        elif polarity <= -0.5:
-            st.error("Eso suena un poco triste... estoy aquí contigo 💔")
-        else:
-            st.info("Tu texto es neutro. A veces está bien simplemente observar 🌀")
+            st.markdown("**Resultados:**")
+            st.write("🔵 Polaridad:", polarity)
+            st.write("🟡 Subjetividad:", subjectivity)
+
+            st.markdown("**🌟 Reacción del sistema:**")
+            if polarity >= 0.5:
+                st.success("¡Eso fue muy positivo! Me hizo sonreír 💜")
+            elif polarity <= -0.5:
+                st.error("Eso suena un poco triste... estoy aquí contigo 💔")
+            else:
+                st.info("Tu texto es neutro. A veces está bien simplemente observar 🌀")
+        
+        st.markdown('</div>', unsafe_allow_html=True)
 
 with col2:
     st.subheader("✍️ Corrector de inglés")
-    text2 = st.text_area("Escribe un texto en inglés para corregir:", key="correction")
+    with st.container():
+        st.markdown('<div class="custom-box">', unsafe_allow_html=True)
 
-    if text2:
-        blob2 = TextBlob(text2)
-        st.markdown("**Texto corregido:**")
-        st.write(blob2.correct())
+        text2 = st.text_area("Escribe un texto en inglés para corregir:", key="correction")
+
+        if text2:
+            blob2 = TextBlob(text2)
+            st.markdown("**Texto corregido:**")
+            st.write(blob2.correct())
+
+        st.markdown('</div>', unsafe_allow_html=True)
 
 st.markdown("---")
 st.caption("🎀 Desarrollado por Valentina • Powered by TextBlob & Google Translate")
+
 
 
 
