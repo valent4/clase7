@@ -5,23 +5,23 @@ from googletrans import Translator
 # Configuración de la página
 st.set_page_config(page_title="Análisis de Sentimientos", layout="centered")
 
-# Estilos personalizados con colores fríos pastel
+# Estilos personalizados con colores fríos pasteles
 st.markdown("""
     <style>
         body, .main, .stApp {
-            background-color: #F2F8FC;  /* Fondo azul claro pastel */
+            background-color: #F1F9FF;  /* Fondo azul pastel suave */
             color: #3A3A3A;  /* Texto gris oscuro para contraste */
-            font-family: 'Helvetica Neue', sans-serif;
+            font-family: 'Arial', sans-serif;
         }
         .stTextInput>div>div>input, textarea {
-            background-color: #E1F2FB !important;  /* Fondo azul muy claro pastel */
+            background-color: #D8E6F3 !important;  /* Fondo azul pastel suave */
             color: #3A3A3A !important;  /* Texto gris oscuro */
             border-radius: 8px;
             padding: 12px;
             font-size: 16px;
         }
         .stButton>button {
-            background-color: #9ACBFF;  /* Botón azul pastel suave */
+            background-color: #B1C9F7;  /* Botón azul pastel suave */
             color: white;
             border-radius: 12px;
             font-size: 16px;
@@ -32,7 +32,7 @@ st.markdown("""
             padding-top: 2rem;
         }
         .stTextArea textarea {
-            background-color: #E1F2FB !important;  /* Fondo azul claro pastel */
+            background-color: #D8E6F3 !important;  /* Fondo azul pastel suave */
             color: #3A3A3A !important;  /* Texto gris oscuro */
             border-radius: 8px;
             padding: 12px;
